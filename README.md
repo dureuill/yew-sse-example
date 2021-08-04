@@ -29,6 +29,12 @@ To install `trunk`, just run:
 cargo install trunk
 ```
 
+To install the `wasm32-unknown-unknown` target:
+
+```
+rustup target add wasm32-unknown-unknown
+```
+
 ### Serving the example
 
 From the repository's root directory, run:
