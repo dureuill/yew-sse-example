@@ -126,8 +126,6 @@ mod event_stream {
     }
 
     pub struct Model {
-        // `ComponentLink` is like a reference to a component.
-        // It can be used to send messages to the component
         events: Vec<Event>,
         task: Result<EventSourceTask, String>,
         last_event: Option<EventSourceUpdate>,
