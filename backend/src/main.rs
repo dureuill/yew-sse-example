@@ -63,15 +63,22 @@ async fn msg(msg: String, context: &State<Context>) {
 
 #[launch]
 fn rocket() -> _ {
-
     #[derive(Deserialize)]
-    #[serde(crate="rocket::serde")]
+    #[serde(crate = "rocket::serde")]
     struct Config {
         dist: PathBuf,
     }
 
+    impl Default for Config {
+        fn default() -> Self {
+            Self {
+                dist: "static/dist".into(),
+            }
+        }
+    }
+
     let rocket = rocket::build();
-    let config: Config = rocket.figment().extract().expect("config");
+    let config: Config = rocket.figment().extract().unwrap_or_default();
 
     rocket
         .manage(Context::new())
